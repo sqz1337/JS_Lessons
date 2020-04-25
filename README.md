@@ -6,5 +6,6 @@
 ![man border](/public/readme/Screenshot_1.png)
 * для выпадения рамки использовал [transform](http://htmlbook.ru/css/transform), скриншот с кодом выше
 * сделал лого вашей фирмы кликабельной, используя [outline](http://htmlbook.ru/css/outline) из лекции, для разнообразия\
-![logo](/public/readme/Screenshot_3.png)
+![logo](/public/readme/Screenshot_3.png)\
+upd. Добавил цвет рамке
 
