@@ -1,12 +1,66 @@
-import {Fabric} from "js/PersonLib.js";
-import {School} from 'js/School.js';
+import {Header,ComponentFactory,PersonList,PopupStack} from './componentLib.js';
 
-let fabric = new Fabric();
-let school = new School(fabric);
 
-school.addStudent('Ivan Ivanov');
-school.addStudent('Lera');
-school.addTeacher('Pavel Sidorovich');
+const stack = new PopupStack();
 
-let layout = school.appendToDOM(document.body);//students to dom
+const factory = new ComponentFactory();
+
+const head = factory.create(Header, {
+   title: 'Tensor Scool',
+   description: 'Это страница школы Тензор. Тут вы можете познакомиться с нашими учениками и посмотреть темы занятий.'
+});
+
+head.mount(document.body);
+const list = factory.create(PersonList);
+list.mount(document.body);
+stack.mount(document.body);
+
+class Model {
+   constructor(data) {
+      for(let key in data) {
+         this[key] = data[key];
+      }
+   }
+
+   get fullName() {
+      return `{this.title}`;
+   }
+}
+
+let personModelList = 
+[new Model({
+   title: 'Алена',
+   photo: 'img/ava03.jpg',
+   study: 'Угату',
+   bday: new Date('1998-11-13'),
+   phone: '+7 (912) 123-45-99',
+   active: new Date('2020-04-03T20:00:00'),
+   popupStack: stack 
+}),
+new Model({
+   title: 'Вика',
+   photo: 'img/ava02.jpg',
+   study: 'Угату',
+   bday: new Date('1998-11-13'),
+   phone: '+7 (912) 123-45-99',
+   active: new Date('2020-04-03T20:00:00'),
+   popupStack: stack 
+}),
+new Model({
+   title: 'Александр',
+   photo: 'img/ava01.jpg',
+   study: 'Угату',
+   bday: new Date('1998-11-13'),
+   phone: '+7 (912) 123-45-99',
+   active: new Date('2020-04-03T20:00:00'),
+   popupStack: stack 
+}),
+
+];
+
+
+for(let i=0;i<personModelList.length;i++){
+   list.add(personModelList[i]);
+}
+
 
